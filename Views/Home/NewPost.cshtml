@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "NewPost";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+@model EdliyyeProduct.Models.Entity.Posst
+<h2>New Post</h2>
+
+<div class="container">
+
+    <form class="form-group" action="/Home/NewPost" method="post">
+        @Html.AntiForgeryToken()
+        @* AntiForgeryToken sayti guclendirir yeni her hansi sehfeye browserden adres yazaraq gire bilmirsen *@
+        <div>
+            <label>Title:</label>
+            @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+
+        </div>
+        <div>
+            <label>Body:</label>
+            @Html.TextBoxFor(m => m.Body, new { @class = "form-control" })
+
+        </div>
+        <div>
+            <label>User ID:</label>
+            @Html.TextBoxFor(m => m.UserID, new { @class = "form-control" })
+
+        </div>
+        <div>
+            <button class="btn btn-info" style="margin-top:20px;">add record</button>
+        </div>
+
+    </form>
+</div>
+
+@if (ViewBag.message != null)
+{
+    <p style="color:red">@ViewBag.message</p>
+
+}

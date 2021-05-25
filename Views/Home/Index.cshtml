@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_Layout.cshtml";
+}
+@using EdliyyeProduct.Models.Entity
+
+@model List<Posst>
+
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        <div class="form-group">
+            <div style="width:25%;float:left;">
+                @Html.TextBox("ara", null, new { @class = "form-control", @placehoder = "Search" })
+            </div>
+            <div style="float:left">
+                <input type="submit" value="Search" class="btn btn-info" />
+
+            </div>
+
+        </div>
+    }
+</div>
+
+
+<table class="table" id="urun">
+    <thead style="background-color:aliceblue">
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Body</th>
+            <th>UserID</th>
+            <th>Comments</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var m in Model)
+        {
+            <tr>
+                <td>@m.Id</td>
+                <td>@m.Title</td>
+              
+                <td>@m.Body</td>
+                <td>@m.UserID</td>
+                <td><a href="/Home/CommentPage/@m.Id" class="btn btn-secondary">Comments</a></td>
+
+            </tr>
+
+        }
+    </tbody>
+</table>
+ 
+
+
+<a href="/Home/NewPost" class="btn btn-success" style="margin-top:10px;">Add to db</a>
+

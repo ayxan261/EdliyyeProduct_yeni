@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "CommentPage";
+    Layout = "~/Views/_Layout.cshtml";
+}
+@using EdliyyeProduct.Models.Entity
+@model List<Comment>
+<h2>Comment Page</h2>
+
+
+<table class="table" id="urun">
+    <thead style="background-color:aliceblue">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Body</th>
+            <th>PostID</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var m in Model)
+        {
+        <tr>
+            <td>@Html.DisplayFor(x => m.Id)</td>
+            <td>@Html.DisplayFor(x => m.Name)</td>
+            @*<td>@Html.DisplayFor(x => m.AlisFiyati)</td>*@
+            <td>@Html.DisplayFor(x => m.email)</td>
+            <td>@Html.DisplayFor(x => m.Body)</td>
+            <td>@Html.DisplayFor(x => m.PostId)</td>
+
+            @*<td>%@Html.DisplayFor(x => m.KDV)</td>*@
+        </tr>
+
+        }
+    </tbody>
+</table>
+
+<a href="/Home/NewComment" class="btn btn-success" style="margin-top:10px;">Add to db</a>
